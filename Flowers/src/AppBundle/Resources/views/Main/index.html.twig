@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Kwiaciarnia{% endblock %}
+
+{% block body %}
+    <h1>Kwiaty na kazda kieszen !</h1>
+    <table>
+        <tr>
+            <td align="right">
+                <label id="login" onclick="myFucntion()">Zaloguj </label>
+                <input id="aa" name="" title="Login" value="">
+
+
+            </td>
+        </tr>
+    </table>
+    <div id="loginmessage" style="display:none">
+        Witaj
+    </div>
+    <script>
+        function myFucntion() {
+            //document.getElementById('loginmessage').style.display = "block";
+            $('#loginmessage').show();
+        }
+    </script>
+{% endblock %}
