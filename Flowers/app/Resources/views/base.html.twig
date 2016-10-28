@@ -2,10 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <script src="jquery-3.1.1.js"></script>
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <style>
+            .myLabel{
+                padding-right: 15px;
+            }
+        </style>
     </head>
     <body>
         {% block body %}{% endblock %}

@@ -3,24 +3,55 @@
 {% block title %}Kwiaciarnia{% endblock %}
 
 {% block body %}
-    <h1>Kwiaty na kazda kieszen !</h1>
-    <table>
-        <tr>
-            <td align="right">
-                <label id="login" onclick="myFucntion()">Zaloguj </label>
-                <input id="aa" name="" title="Login" value="">
+    <div>
+        <div style="width:100%; text-align: center">
+            <h1>Kwiaty na każdą kieszeń!</h1>
+        </div>
+
+        <div id="divForLogIn" style="width: 17%; float: right; text-align: right;">
+            <label style="font-style: italic; text-align: left;">Zaloguj sie aby wpełni korzystać z aplikacjji</label>
+            {{ form_start(form) }}
+                {{ form_row(form.emailAddress) }}
+                {{ form_row(form.hashPassword) }}
+
+                <div style="text-align: center">
+                    <button type="submit" style="margin-top:10px;">Zaloguj</button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+
+        <div style="width: 72%; float: right; font-style: italic;">
+            <h2>Dowieziemy kwiaty w wybrane przez Ciebie miejsce...</h2>
+            <h3 style="cursor: pointer; padding: 10px; border: groove #666666 0.5px; ;" onclick="a()">Dowiedz sie wiecej</h3>
+            <div id="description" style="display: none; float:left; padding-left: 30px;">
+                <h4>Zaloguj sie aby zlozyc zamowienie, a my dowieziemy je pod wskazany adres w obrebie calego miasta Krakow.</h4>
+            </div>
+        </div>
 
 
-            </td>
-        </tr>
-    </table>
-    <div id="loginmessage" style="display:none">
-        Witaj
+
+
     </div>
+    <div style="height: 1px; padding-right: 15px; padding-left: 15px; width:100%; text-align:center; background-color: black; margin-top: 40px; float: left"></div>
+
+    <div id="content" style="width: 100%; height: 70%; float: left; margin-top: 50px;">
+        <div id="assideMenu" style="float:left; width: 12%; border-color: #666666; border: 1px groove; line-height: 35px; padding: 20px; min-height: 400px;">
+            <a href="{{ path("index") }}">Strona Głowna</a></br>
+            <a href="{{ path("index") }}">Wyswietl produkty</a></br>
+            <a href="{{ path("index") }}">Zloz zamowienie</a></br>
+            <a href="{{ path("index") }}">Zglos problem</a></br>
+        </div>
+        <div id="products" style="float: right; width: 82%; border: groove #666666 1px; min-height: 400px; padding: 20px;">
+            Brak produktow...
+        </div>
+    </div>
+
     <script>
-        function myFucntion() {
-            //document.getElementById('loginmessage').style.display = "block";
-            $('#loginmessage').show();
+        function a() {
+            document.getElementById('description').style.display = 'flex';
         }
     </script>
+
 {% endblock %}
+
+
