@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sprzedawcy</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ seller.id }}</td>
+            </tr>
+            <tr>
+                <th>Nazwa</th>
+                <td>{{ seller.name }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('seller_index') }}">Powrót</a>
+        </li>
+        <li>
+            <a href="{{ path('seller_edit', { 'id': seller.id }) }}">Edycja</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Usuń">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

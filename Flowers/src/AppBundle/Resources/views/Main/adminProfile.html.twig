@@ -3,5 +3,42 @@
 {% block title %}Administator{% endblock %}
 
 {% block body %}
-   Hi Admin !
+
+    <div style="width: 100%; height: 70px; background-color: #d9d9d9; padding-top: 5px">
+        <div style="float: right; padding: 12px; display: block">
+            <button style="width: 100px; height: 40px;">
+                <a href="{{ path("logOut") }}">Wyloguj</a>
+            </button>
+        </div>
+
+        <label style="padding: 15px; font-size: larger; display: block">Profil Administratora !</label>
+    </div>
+    <div style="width: 100%; height: 7px; background-color: #d9d9d9; margin-top: 20px"></div>
+
+    <div style=" padding-top: 29px;">
+        <div class="assideMenu">
+            <a href="{{ path("flowers_new") }}" target="iframeAddFlower" onclick="showIframe()">Dodaj kwiaty</a><br>
+            <a href="{{ path("flowers_index") }}" target="iframeAddFlower" onclick="showIframe()">Pokaz kwiaty</a><br>
+            <a href="{{ path("seller_new") }}" target="iframeAddFlower" onclick="showIframe()">Dodaj sprzedawcow</a><br>
+            <a href="{{ path("seller_index") }}" target="iframeAddFlower" onclick="showIframe()">Pokaz sprzedawcow</a><br>
+
+
+        </div>
+        <div style="float: right; width: 55%;">
+            <iframe height="330px" width="500px" src="" name="iframeAddFlower" style="display: none; border: none;align-content: center"></iframe>
+            {#<div>#}
+                {##}
+                {#{{ include("product/new.html.twig") }}#}
+            {#</div>#}
+        </div>
+    </div>
+
+
+
+
+    <script>
+        function showIframe() {
+            document.getElementsByName("iframeAddFlower")[0].style.display = "block";
+        }
+    </script>
 {% endblock %}

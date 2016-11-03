@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sprzedawca</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Dodaj" style="margin-top: 15px;" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('seller_index') }}">Powrót</a>
+        </li>
+    </ul>
+{% endblock %}

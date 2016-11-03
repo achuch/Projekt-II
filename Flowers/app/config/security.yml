@@ -3,6 +3,7 @@
 security:
     encoders:
             AppBundle\Entity\User: bcrypt
+            AppBundle\Entity\Seller: bcrypt
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory:

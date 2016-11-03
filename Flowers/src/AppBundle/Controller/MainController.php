@@ -72,4 +72,14 @@ class MainController extends Controller
 
     }
 
+
+    /**
+     * @Route("/logout", name="logOut")
+     */
+    public function logOutAction(Request $request)
+    {
+        $request->getSession()->clear();
+        return $this->redirect($this->generateUrl("index"));
+    }
+
 }

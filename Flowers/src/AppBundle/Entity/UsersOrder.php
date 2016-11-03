@@ -31,6 +31,14 @@ class UsersOrder
     private $user;
 
     /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="Seller", inversedBy="orders")
+     * @ORM\JoinColumn(name="sellerId", referencedColumnName="id")
+     */
+    private $seller;
+
+    /**
      * @var Collection
      *
      * @ORM\OneToMany(targetEntity="OrderProducts", mappedBy="order")
@@ -218,5 +226,29 @@ class UsersOrder
     public function removeProduct(\AppBundle\Entity\OrderProduct $product)
     {
         $this->products->removeElement($product);
+    }
+
+    /**
+     * Set seller
+     *
+     * @param \AppBundle\Entity\Seller $seller
+     *
+     * @return UsersOrder
+     */
+    public function setSeller(\AppBundle\Entity\Seller $seller = null)
+    {
+        $this->seller = $seller;
+
+        return $this;
+    }
+
+    /**
+     * Get seller
+     *
+     * @return \AppBundle\Entity\Seller
+     */
+    public function getSeller()
+    {
+        return $this->seller;
     }
 }

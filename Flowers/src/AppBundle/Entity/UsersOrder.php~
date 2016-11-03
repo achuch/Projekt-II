@@ -31,6 +31,14 @@ class UsersOrder
     private $user;
 
     /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="Seller", inversedBy="orders")
+     * @ORM\JoinColumn(name="sellerId", referencedColumnName="id")
+     */
+    private $seller;
+
+    /**
      * @var Collection
      *
      * @ORM\OneToMany(targetEntity="OrderProducts", mappedBy="order")

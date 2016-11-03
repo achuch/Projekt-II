@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Kwiat</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Nazwa</th>
+                <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>Cena</th>
+                <td>{{ product.price }}</td>
+            </tr>
+            <tr>
+                <th>Typ</th>
+                <td>{{ product.type }}</td>
+            </tr>
+            <tr>
+                <th>Opis</th>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th>Ilosc</th>
+                <td>{{ product.amountOfStock }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('flowers_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('flowers_edit', { 'id': product.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
