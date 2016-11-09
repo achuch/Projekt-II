@@ -28,6 +28,7 @@ class ProductController extends Controller
 
         $products = $em->getRepository('AppBundle:Product')->findAll();
 
+
         return $this->render('product/index.html.twig', array(
             'products' => $products,
         ));

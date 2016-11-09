@@ -17,15 +17,17 @@
 
     <div style=" padding-top: 29px;">
         <div class="assideMenu">
+            <a href="{{ path("producttype_index") }}" target="iframeAddFlower" onclick="showIframe()">Konfiguruj Typy Produktów</a><br>
             <a href="{{ path("flowers_new") }}" target="iframeAddFlower" onclick="showIframe()">Dodaj kwiaty</a><br>
             <a href="{{ path("flowers_index") }}" target="iframeAddFlower" onclick="showIframe()">Pokaz kwiaty</a><br>
             <a href="{{ path("seller_new") }}" target="iframeAddFlower" onclick="showIframe()">Dodaj sprzedawcow</a><br>
             <a href="{{ path("seller_index") }}" target="iframeAddFlower" onclick="showIframe()">Pokaz sprzedawcow</a><br>
+            <a href="{{ path("user_index", {"numberType":"100"})}}" target="iframeAddFlower" onclick="showIframe()">Pokaz użytkowników</a><br>
 
 
         </div>
-        <div style="float: right; width: 55%;">
-            <iframe height="330px" width="500px" src="" name="iframeAddFlower" style="display: none; border: none;align-content: center"></iframe>
+        <div style="float: right; width: 65%;">
+            <iframe height="1530px" width="1000px" src="" name="iframeAddFlower" style="display: none; border: none;align-content: center"></iframe>
             {#<div>#}
                 {##}
                 {#{{ include("product/new.html.twig") }}#}

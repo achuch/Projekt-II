@@ -38,34 +38,6 @@ class User implements UserInterface
     private $lastName;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="City", type="string", length=100)
-     */
-    private $city;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Street", type="string", length=255)
-     */
-    private $street;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="HouseNumber", type="integer")
-     */
-    private $houseNumber;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="LocalNumber", type="integer")
-     */
-    private $localNumber;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="PhoneNumber", type="integer")
@@ -175,101 +147,6 @@ class User implements UserInterface
         return $this->lastName;
     }
 
-    /**
-     * Set city
-     *
-     * @param string $city
-     *
-     * @return User
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return string
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * Set street
-     *
-     * @param string $street
-     *
-     * @return User
-     */
-    public function setStreet($street)
-    {
-        $this->street = $street;
-
-        return $this;
-    }
-
-    /**
-     * Get street
-     *
-     * @return string
-     */
-    public function getStreet()
-    {
-        return $this->street;
-    }
-
-    /**
-     * Set houseNumber
-     *
-     * @param integer $houseNumber
-     *
-     * @return User
-     */
-    public function setHouseNumber($houseNumber)
-    {
-        $this->houseNumber = $houseNumber;
-
-        return $this;
-    }
-
-    /**
-     * Get houseNumber
-     *
-     * @return int
-     */
-    public function getHouseNumber()
-    {
-        return $this->houseNumber;
-    }
-
-    /**
-     * Set localNumber
-     *
-     * @param integer $localNumber
-     *
-     * @return User
-     */
-    public function setLocalNumber($localNumber)
-    {
-        $this->localNumber = $localNumber;
-
-        return $this;
-    }
-
-    /**
-     * Get localNumber
-     *
-     * @return int
-     */
-    public function getLocalNumber()
-    {
-        return $this->localNumber;
-    }
 
     /**
      * Set phoneNumber
@@ -294,6 +171,13 @@ class User implements UserInterface
     {
         return $this->phoneNumber;
     }
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Address", mappedBy="user")
+     *
+     * @var Collection
+     */
+    protected $addresses;
 
     /**
      * Set emailAddress
@@ -408,5 +292,40 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+
+    /**
+     * Add address
+     *
+     * @param \AppBundle\Entity\Address $address
+     *
+     * @return User
+     */
+    public function addAddress(\AppBundle\Entity\Address $address)
+    {
+        $this->addresses[] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Remove address
+     *
+     * @param \AppBundle\Entity\Address $address
+     */
+    public function removeAddress(\AppBundle\Entity\Address $address)
+    {
+        $this->addresses->removeElement($address);
+    }
+
+    /**
+     * Get addresses
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
     }
 }

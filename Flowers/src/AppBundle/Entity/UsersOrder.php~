@@ -227,4 +227,28 @@ class UsersOrder
     {
         $this->products->removeElement($product);
     }
+
+    /**
+     * Set seller
+     *
+     * @param \AppBundle\Entity\Seller $seller
+     *
+     * @return UsersOrder
+     */
+    public function setSeller(\AppBundle\Entity\Seller $seller = null)
+    {
+        $this->seller = $seller;
+
+        return $this;
+    }
+
+    /**
+     * Get seller
+     *
+     * @return \AppBundle\Entity\Seller
+     */
+    public function getSeller()
+    {
+        return $this->seller;
+    }
 }

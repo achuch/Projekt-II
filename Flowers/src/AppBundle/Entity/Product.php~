@@ -29,16 +29,17 @@ class Product
     private $name;
 
     /**
-     * @var int
+     * @var double
      *
-     * @ORM\Column(name="Price", type="integer")
+     * @ORM\Column(name="Price", type="decimal", scale=2, precision=10)
      */
     private $price;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="Type", type="string", length=100)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProductType", inversedBy="products")
+     * @ORM\JoinColumn(name="typeId", referencedColumnName="id")
      */
     private $type;
 
@@ -116,30 +117,6 @@ class Product
     }
 
     /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Product
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
      * Set description
      *
      * @param string $description
@@ -185,5 +162,29 @@ class Product
     public function getAmountOfStock()
     {
         return $this->amountOfStock;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \AppBundle\Entity\ProductType $type
+     *
+     * @return Product
+     */
+    public function setType(\AppBundle\Entity\ProductType $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \AppBundle\Entity\ProductType
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

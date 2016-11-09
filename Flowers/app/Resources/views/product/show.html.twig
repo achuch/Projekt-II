@@ -34,14 +34,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('flowers_index') }}">Back to the list</a>
+            <a href="{{ path('flowers_index') }}">Powrot</a>
         </li>
         <li>
-            <a href="{{ path('flowers_edit', { 'id': product.id }) }}">Edit</a>
+            <a href="{{ path('flowers_edit', { 'id': product.id }) }}">Edycja</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Usun">
             {{ form_end(delete_form) }}
         </li>
     </ul>

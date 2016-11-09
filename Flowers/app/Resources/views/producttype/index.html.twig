@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Typy</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nazwa</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for productType in productTypes %}
+            <tr>
+                <td><a href="{{ path('producttype_show', { 'id': productType.id }) }}">{{ productType.id }}</a></td>
+                <td>{{ productType.typeName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('producttype_show', { 'id': productType.id }) }}">Poakz</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('producttype_edit', { 'id': productType.id }) }}">Edytuj</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('producttype_new') }}">Dodaj</a>
+        </li>
+    </ul>
+{% endblock %}

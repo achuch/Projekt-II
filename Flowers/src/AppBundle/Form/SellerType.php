@@ -21,6 +21,7 @@ class SellerType extends AbstractType
             ->add('name',TextType::class, ['label' => 'Nazwa', 'label_attr'=> array('class'=>'myLabel'), 'attr'=> array('style'=>'margin-left:6px;margin-top:5px;')])
             ->add('password',PasswordType::class, ['label' => 'Hasło', 'label_attr'=> array('class'=>'myLabel'), 'attr'=> array('style'=>'margin-left:13px;margin-top:5px;')])
         ;
+
     }
     
     /**

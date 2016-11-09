@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% if message != null %}
+        <h2 style="padding: 100px 60px 0px 0px">{{ message }}</h2>
+    {% else %}
+
+    <h1>Nowy użytkownik</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.firstName) }}
+        {{ form_row(form.lastName) }}
+        {{ form_row(form.emailAddress) }}
+        {{ form_row(form.hashPassword.first) }}
+        {{ form_row(form.hashPassword.second) }}
+        {{ form_row(form.phoneNumber) }}
+        <input type="submit" value="Dodaj" style="margin-top: 5px;" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('index') }}">Powrót</a>
+        </li>
+    </ul>
+
+
+    {% endif %}
+
+
+{% endblock %}

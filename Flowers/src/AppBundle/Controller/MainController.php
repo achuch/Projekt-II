@@ -24,12 +24,16 @@ class MainController extends Controller
 
         $this->whoIsLogIn = new User();
 
+        $em = $this->getDoctrine()->getManager();
+
+        $products = $em->getRepository('AppBundle:Product')->findAll();
+
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
             $repo = $this->getDoctrine()->getRepository('AppBundle:User');
-            $users = $repo->findOneBy(array("emailAddress"=>"aaa@aaa.com"));
-            echo $users->getEmailAddress();
+            //$users = $repo->findOneBy(array("emailAddress"=>"aaa@aaa.com"));
+            $users = $repo->findOneBy(array("emailAddress"=> $user->getEmailAddress()));
 
             $validatePassword = $this->get('security.encoder_factory')->getEncoder($user)->isPasswordValid($users->getPassword(),$user->getPassword(),$user->getSalt());
 
@@ -41,11 +45,19 @@ class MainController extends Controller
 
                 if($users->getType() == "0")
                     return $this->redirect($this->generateUrl("adminProfile"));
+                else
+                    return $this->render('AppBundle:Main:index.html.twig', array(
+                        'form' => null,
+                        'user' => $users,
+                        'products' => $products
+
+                    ));
             }
         }
 
         return $this->render('AppBundle:Main:index.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'products' => $products
 
         ));
     }

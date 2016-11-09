@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Dodaj Typ</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Dodaj" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('producttype_index') }}">Powrót</a>
+        </li>
+    </ul>
+{% endblock %}
