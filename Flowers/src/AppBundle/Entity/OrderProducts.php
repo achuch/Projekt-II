@@ -29,9 +29,9 @@ class OrderProducts
     private $amount;
 
     /**
-     * @var int
+     * @var double
      *
-     * @ORM\Column(name="price", type="integer")
+     * @ORM\Column(name="price", type="decimal", scale=2, precision=10)
      */
     private $price;
 
@@ -84,7 +84,7 @@ class OrderProducts
     /**
      * Set price
      *
-     * @param integer $price
+     * @param double $price
      *
      * @return OrderProducts
      */
@@ -98,7 +98,7 @@ class OrderProducts
     /**
      * Get price
      *
-     * @return int
+     * @return double
      */
     public function getPrice()
     {

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lista zamowien</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Data zamowienia</th>
+                <th>Czy zakonczono </th>
+                <th>CZy zrealizowano</th>
+                <th>Dostepne akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for usersOrder in usersOrders %}
+            <tr>
+                <td><a href="{{ path('usersorder_show', { 'id': usersOrder.id }) }}">{{ usersOrder.id }}</a></td>
+                <td>{% if usersOrder.date %}{{ usersOrder.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if usersOrder.isFinished %}Tak{% else %}Nie{% endif %}</td>
+                <td>{% if usersOrder.isRealized %}Tak{% else %}Nie{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('usersorder_show', { 'id': usersOrder.id }) }}">Pokaz</a>
+                        </li>
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

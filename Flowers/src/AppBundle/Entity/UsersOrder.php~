@@ -34,7 +34,7 @@ class UsersOrder
      * @var int
      *
      * @ORM\ManyToOne(targetEntity="Seller", inversedBy="orders")
-     * @ORM\JoinColumn(name="sellerId", referencedColumnName="id")
+     * @ORM\JoinColumn(name="sellerId", referencedColumnName="id", nullable=true)
      */
     private $seller;
 
@@ -45,19 +45,6 @@ class UsersOrder
      */
     private $products;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="ProductAmount", type="integer")
-     */
-    private $productAmount;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="Cost", type="integer")
-     */
-    private $cost;
 
     /**
      * @var \DateTime
@@ -66,6 +53,27 @@ class UsersOrder
      */
     private $date;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_finished", type="boolean")
+     */
+    private $isFinished;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_realized", type="boolean")
+     */
+    private $isRealized;
+
+    /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Address", inversedBy="orders")
+     * @ORM\JoinColumn(name="addressId", referencedColumnName="id", nullable=true)
+     */
+    private $address;
 
     /**
      * Get id
@@ -125,53 +133,6 @@ class UsersOrder
         return $this->products;
     }
 
-    /**
-     * Set productAmount
-     *
-     * @param integer $productAmount
-     *
-     * @return UsersOrder
-     */
-    public function setProductAmount($productAmount)
-    {
-        $this->productAmount = $productAmount;
-
-        return $this;
-    }
-
-    /**
-     * Get productAmount
-     *
-     * @return int
-     */
-    public function getProductAmount()
-    {
-        return $this->productAmount;
-    }
-
-    /**
-     * Set cost
-     *
-     * @param integer $cost
-     *
-     * @return UsersOrder
-     */
-    public function setCost($cost)
-    {
-        $this->cost = $cost;
-
-        return $this;
-    }
-
-    /**
-     * Get cost
-     *
-     * @return int
-     */
-    public function getCost()
-    {
-        return $this->cost;
-    }
 
     /**
      * Set date
@@ -207,11 +168,11 @@ class UsersOrder
     /**
      * Add product
      *
-     * @param \AppBundle\Entity\OrderProduct $product
+     * @param \AppBundle\Entity\OrderProducts $product
      *
      * @return UsersOrder
      */
-    public function addProduct(\AppBundle\Entity\OrderProduct $product)
+    public function addProduct(\AppBundle\Entity\OrderProducts $product)
     {
         $this->products[] = $product;
 
@@ -221,9 +182,9 @@ class UsersOrder
     /**
      * Remove product
      *
-     * @param \AppBundle\Entity\OrderProduct $product
+     * @param \AppBundle\Entity\OrderProducts $product
      */
-    public function removeProduct(\AppBundle\Entity\OrderProduct $product)
+    public function removeProduct(\AppBundle\Entity\OrderProducts $product)
     {
         $this->products->removeElement($product);
     }
@@ -250,5 +211,79 @@ class UsersOrder
     public function getSeller()
     {
         return $this->seller;
+    }
+
+    /**
+     * Set isFinished
+     *
+     * @param boolean $isFinished
+     *
+     * @return UsersOrder
+     */
+    public function setIsFinished($isFinished)
+    {
+        $this->isFinished = $isFinished;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Get isFinished
+     *
+     * @return boolean
+     */
+    public function getIsFinished()
+    {
+        return $this->isFinished;
+    }
+
+    /**
+     * Set isRealized
+     *
+     * @param boolean $isRealized
+     *
+     * @return UsersOrder
+     */
+    public function setIsRealized($isRealized)
+    {
+        $this->isRealized = $isRealized;
+
+        return $this;
+    }
+
+    /**
+     * Get isRealized
+     *
+     * @return boolean
+     */
+    public function getIsRealized()
+    {
+        return $this->isRealized;
+    }
+
+    /**
+     * Set address
+     *
+     * @param \AppBundle\Entity\Address $address
+     *
+     * @return UsersOrder
+     */
+    public function setAddress(\AppBundle\Entity\Address $address = null)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return \AppBundle\Entity\Address
+     */
+    public function getAddress()
+    {
+        return $this->address;
     }
 }

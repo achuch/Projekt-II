@@ -187,4 +187,9 @@ class Product
     {
         return $this->type;
     }
+
+    function __toString()
+    {
+        return $this->name;
+    }
 }

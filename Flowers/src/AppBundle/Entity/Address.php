@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +57,13 @@ class Address
      * @ORM\JoinColumn(name="userId", referencedColumnName="id")
      */
     protected $user;
+
+    /**
+     * @var Collection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UsersOrder", mappedBy="address")
+     */
+    protected $orders;
 
 
     /**
@@ -186,5 +194,46 @@ class Address
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->orders = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add order
+     *
+     * @param \AppBundle\Entity\UsersOrder $order
+     *
+     * @return Address
+     */
+    public function addOrder(\AppBundle\Entity\UsersOrder $order)
+    {
+        $this->orders[] = $order;
+
+        return $this;
+    }
+
+    /**
+     * Remove order
+     *
+     * @param \AppBundle\Entity\UsersOrder $order
+     */
+    public function removeOrder(\AppBundle\Entity\UsersOrder $order)
+    {
+        $this->orders->removeElement($order);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 }

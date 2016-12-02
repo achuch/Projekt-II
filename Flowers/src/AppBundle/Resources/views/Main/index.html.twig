@@ -4,11 +4,11 @@
 
 {% block body %}
     <div>
-        <div style="width:100%; text-align: center; background-color: grey; color: white;">
-            <h1>Kwiaty na każdą kieszeń!</h1>
+        <div id="titleMain">
+            <label style="font-weight: bold; font-size: 32pt">Kwiaty na każdą kieszeń!</label>
         </div>
 
-        <div id="divForLogIn" style="width: 20%; float: right; text-align: right;">
+        <div id="divForLogIn" style="width: 20%; float: right; text-align: right;background: #c9a3a2; padding-bottom: 7px;">
         {% if form != null %}
 
                 <label style="font-style: italic; text-align: left;">Zaloguj sie aby wpełni korzystać z aplikacjji</label>
@@ -25,11 +25,13 @@
                 </div>
 
             {% else %}
-                <label style="font-style: italic">Witamy ponownie !</label>
-                <label style="padding: 10px;">{{ user.firstName }} {{ user.lastName }}</label>
-                <button style="width: 100px; height: 40px;">
-                    <a href="{{ path("index") }}">Wyloguj</a>
-                </button>
+                <div id="divAfterLogiIn" style="border: inset 3px #ff00bf; padding-right: 25%; padding-top: 15px; padding-bottom: 16px; background-color: #f5e6ff; margin-top: 7px; ">
+                <label style="font-style: italic; font-size: 13pt;">Witamy ponownie !</label><br/>
+                <label style="padding: 17px 10px 10px 10px; text-decoration: underline;">{{ user.firstName }} {{ user.lastName }}</label><br/>
+                {#<button style="width: 100px; height: 20px; margin-top: 20px; margin-right: 18px;">#}
+                    <a href="{{ path("index") }}" style="text-decoration: none;text-align:center; width: 100px; height: 20px; margin-top: 20px; margin-right: 20px;background: #ffffff;display: inline-block">Wyloguj</a>
+                {#</button>#}
+                </div>
         {% endif %}
             </div>
 
@@ -39,38 +41,49 @@
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="close">x</span>
-                <iframe src="" name="cos" height="100%" width="60%" style="border: none; padding: 9px; text-align: center; float: left;margin-left: 15%"></iframe>
+                <iframe id="iframemodal" src="" name="cos" height="100%" width="60%" style="border: none; padding: 9px; text-align: center; float: left;margin-left: 15%"></iframe>
             </div>
 
         </div>
 
-        <div style="width: 68%; float: right; font-style: italic;">
-            <h2>Dowieziemy kwiaty w wybrane przez Ciebie miejsce...</h2>
+        <div style="width: 68%; float: right; font-style: italic;background: linear-gradient(to right, white, #c9a3a2)">
+            <h2 id="titleSecond">Dowieziemy kwiaty w wybrane przez Ciebie miejsce...</h2>
             <h3 id="showMessageInDesc" style="cursor: pointer; padding: 10px; border: groove #666666 0.5px; max-width: 150px;">Dowiedz sie wiecej</h3>
             <div id="description" style="display: none; float:left; padding-left: 30px;">
                 <h4>Zaloguj sie aby zlozyc zamowienie, a my dowieziemy je pod wskazany adres w obrebie calego miasta Krakow.</h4>
             </div>
         </div>
 
-        <div style="width: 6%;float: left; ">
-            <img src="{{ asset('Images/FlowersImg.jpg') }}" style="width: 135px; height: 100px;padding-left: 30px;">
+        <div style="width: 3%;float: left; padding-top: 7px;">
+            <img src="{{ asset('Images/FlowersImg.jpg') }}" style="width: 105px; height: 100px;padding-left: 50px; opacity: 0.8">
         </div>
 
 
 
 
     </div>
-    <div style="height: 1px; padding-right: 15px; padding-left: 15px; width:100%; text-align:center; background-color: black; margin-top: 32px; float: left"></div>
+    {% if form == null %}
+    <div style="float: right; width: 19%;margin-bottom: 9px;margin-top: 2px;">
+        <img src="{{ asset('Images/koszyk.jpg') }}" height="18px" width="18px">
+        {% if order == false %}
+            <label style="padding-left: 10px">Twój koszyk jest na razie pusty !</label>
+            {% else %}
+                <a href="{{ path('usersorder_edit', {'id': user.id}) }}" target="frameContentProductsinOrder" style="padding-left: 10px"  onclick="aa()">W Twoim koszyku cos jest !!</a>
+        {% endif %}
+
+    </div>
+    {% endif %}
+    <div style="height: 2px; padding-right: 15px; padding-left: 15px; width:100%; text-align:center; background-color: #000066; margin-top: 12px; float: left"></div>
 
     <div id="content" style="width: 100%; height: 70%; float: left; margin-top: 25px;">
-        <div class="assideMenu" style="width: 12%; min-height: 400px;">
+        <div class="assideMenu" style="width: 12%; min-height: 400px;background: RGB(162, 177, 196);">
             <a href="{{ path("index") }}">Strona Głowna</a></br>
             <a href="{{ path("index") }}">Wyswietl produkty</a></br>
             <a href="{{ path("index") }}">Zloz zamowienie</a></br>
             <a href="{{ path("index") }}">Zglos problem</a></br>
         </div>
-        <div id="products" style="float: right; width: 82%; border: groove #999999 1px; border-top-left-radius: 16px; border-top-right-radius: 16px; border-bottom: none; min-height: 400px; padding: 8px 16px 16px 16px;">
-            {#<iframe name="frameContentProducts" src="{{ path('flowers_index') }}" width="100%" height="400px" frameborder="none"></iframe>#}
+        <div id="products" style="float: right; width: 82%; border: groove #999999 2px; border-top-left-radius: 16px; border-top-right-radius: 16px; border-bottom: none; min-height: 400px; padding: 8px 16px 16px 16px;background: radial-gradient(#efeff5, white)">
+            <iframe id="franetoOrder" name="frameContentProductsinOrder" src="" width="100%" height="350px" frameborder="none" style="display: none; z-index: 100; background-color: white;"></iframe>
             {% for product in products %}
                 <div style="width: 46%;float: left; line-height: 5px; border: solid #cc00cc 1px; border-radius: 10px;padding: 10px 20px 10px 20px; font-style: italic;margin-top: 10px;">
                     <div style="width: 30%; float: left; font-size: 16pt;padding: 10px; font-weight: bold">{{ product.name }}</div>
@@ -79,7 +92,7 @@
                     <h5 style="text-align: left;padding: 25px 10px 5px 10px"><label>{{ product.description }}</label></h5>
                     <h5 style="text-align: right;padding-right: 10px;"><label>{{ product.price }} zł</label></h5>
                     {% if form == null %}
-                        <h5 style="text-align: right;"><a href="#" style="text-align: right;padding-right: 10px; color: black;">Dodaj do zamówienia</a></h5>
+                        <h5 style="text-align: right;"><a href="{{ path("orderproducts_new" , { 'id': product.id , 'user':user.id } ) }}" target="cos" onclick="onlslslslsl()" style="text-align: right;padding-right: 10px; color: black;">Dodaj do zamówienia</a></h5>
                     {% endif %}
                 </div>
             {% endfor %}
@@ -87,6 +100,7 @@
     </div>
 
     <script>
+
         var modal = document.getElementById('myModal');
 
         // Get the <span> element that closes the modal
@@ -100,6 +114,7 @@
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
             modal.style.display = "none";
+            $("#iframemodal").attr('src','about:blank');
         }
 
 
@@ -118,6 +133,27 @@
 
                 }
         )
+        
+        function aa() {
+            $('#franetoOrder').toggle();
+        }
+
+        $(document).ready(
+                setInterval(function () {
+                    if($("#titleSecond").text() == "Złóż zamowienie juz dzis !")
+                    {
+                        $("#titleSecond").text("Dowieziemy kwiaty w wybrane przez Ciebie miejsce...")
+                    }
+                    else
+                    {
+                        $("#titleSecond").text("Złóż zamowienie juz dzis !")
+                    }
+                }, 4000)
+
+
+
+        )
+
     </script>
 
 {% endblock %}

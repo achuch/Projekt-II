@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Zamowienie</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ usersOrder.id }}</td>
+            </tr>
+            <tr>
+                <th>Data</th>
+                <td>{% if usersOrder.date %}{{ usersOrder.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Czy zakonczono</th>
+                <td>{% if usersOrder.isFinished %}Tak{% else %}Nie{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Czy zrealizowano</th>
+                <td>{% if usersOrder.isRealized %}Tak{% else %}Nie{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% for product in products %}
+        <li>
+            <label>{{ product.product.name }} {{ product.amount }} {{ product.price }}</label>
+
+        </li>
+    {% endfor %}
+    <label style="display: block">Zamówił : <a href="{{ path('user_show', {'id': user.id}) }}">{{ user.firstname }} {{ user.lastname }}</a></label>
+    <label>Na adres : {{ address.city }} ul.{{ address.street }} {{ address.houseNumber }}/{{ address.localNumber }}</label>
+    <ul>
+        {% if  edit_form != null%}
+            <li>
+                {{ form_start(edit_form) }}
+                <input type="submit" value="Zamowienie zrealizowane">
+                {{ form_end(edit_form) }}
+            </li>
+        {% endif %}
+        <li>
+            <a href="{{ path('usersorder_index') }}">Powrót do listy</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Usun">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

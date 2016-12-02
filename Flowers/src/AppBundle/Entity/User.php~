@@ -237,11 +237,11 @@ class User implements UserInterface
     /**
      * Add order
      *
-     * @param \AppBundle\Entity\UserOrder $order
+     * @param \AppBundle\Entity\UsersOrder $order
      *
      * @return User
      */
-    public function addOrder(UserOrder $order)
+    public function addOrder(UsersOrder $order)
     {
         $this->orders[] = $order;
 
@@ -251,9 +251,9 @@ class User implements UserInterface
     /**
      * Remove order
      *
-     * @param \AppBundle\Entity\UserOrder $order
+     * @param \AppBundle\Entity\UsersOrder $order
      */
-    public function removeOrder(UserOrder $order)
+    public function removeOrder(UsersOrder $order)
     {
         $this->orders->removeElement($order);
     }

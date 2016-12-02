@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>{{ product.name }}</h1>
+
+    {% if form != null %}
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Dodaj do zamowienia" style="margin-top: 10px;"/>
+    {{ form_end(form) }}
+    {% endif %}
+
+    {% if message != ''%}
+        <label style="color: red">{{ message }}</label>
+    {% endif %}
+
+    {% if orders != null %}
+
+    {% endif %}
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('orderproducts_index') }}">Back to the list</a>#}
+        {#</li>#}
+    {#</ul>#}
+
+{% endblock %}

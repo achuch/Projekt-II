@@ -41,7 +41,7 @@ class Product
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProductType", inversedBy="products")
      * @ORM\JoinColumn(name="typeId", referencedColumnName="id")
      */
-    private $type;
+    protected $type;
 
     /**
      * @var string
@@ -186,5 +186,10 @@ class Product
     public function getType()
     {
         return $this->type;
+    }
+
+    function __toString()
+    {
+        return $this->name;
     }
 }

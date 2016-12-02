@@ -33,12 +33,12 @@
     </table>
 
     <ul>
-        <li>
-            <a href="{{ path('user_index',{'numberType','100'}) }}">Powrót</a>
-        </li>
-        <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edytuj</a>
-        </li>
+        {#<li>#}
+            {#<a href="{{ path('user_index',{'numberType':'100'}) }}">Powrót</a>#}
+        {#</li>#}
+        {#<li>#}
+            {#<a href="{{ path('user_edit', { 'id': user.id }) }}">Edytuj</a>#}
+        {#</li>#}
         <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Usuń">

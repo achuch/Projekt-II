@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="contentOFIframeOrder">
+    <div style="margin: auto;float: right;width: 69%;">
+        {% if form != null %}
+            <h3>Wpisz adres zamówienia !</h3>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Zakoncz zamowienie" />
+        {{ form_end(form) }}
+    {% else %}
+    <label style="color: red;">{{ message }}</label>
+    {% endif %}
+
+        </div>
+    </div>
+
+
+{% endblock %}

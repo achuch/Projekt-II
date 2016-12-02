@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="contentOFIframeOrder">
+    <div style="margin: auto;float: right;width: 69%;">
+    <h1 style="padding-left: 80px;">Twoje zamówienie</h1>
+
+
+
+    <ol style="margin-top: 30px; border-bottom: 2px solid #999999; width: 50%; padding-bottom: 11px;">
+    {% for product in products %}
+        <li style="margin-top: 15px; margin-bottom: 10px;">
+        <label>{{ product.product.name }} {{ product.amount }} {{ product.price }}</label>
+        <a href="{{ path("orderproducts_edit", {'id':product.id, 'user':user.id}) }}">Edytuj</a>
+        </li>
+    {% endfor %}
+    </ol>
+
+    <label style="margin-top: 20px;">Kwota zamowienia : {{ sum }} </label><label style="color: red; padding-right: 20px;">{{ message }}</label>
+
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Usun zamowienie" style="margin-top: 20px; margin-bottom: 8px;margin-left: 150px; width: 150px; height: 30px;">
+            {{ form_end(delete_form) }}
+
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <input type="submit" value="Zakoncz zamowienie" style="margin-top: 5px; margin-bottom: 20px;margin-left: 150px;width: 150px; height: 30px;"/>
+    {{ form_end(edit_form) }}
+
+    </div>
+    </div>
+{% endblock %}
