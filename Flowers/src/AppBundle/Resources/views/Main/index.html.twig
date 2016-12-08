@@ -80,7 +80,10 @@
             <a href="{{ path("index") }}">Strona Głowna</a></br>
             <a href="{{ path("index") }}">Wyswietl produkty</a></br>
             <a href="{{ path("index") }}">Zloz zamowienie</a></br>
-            <a href="{{ path("index") }}">Zglos problem</a></br>
+            {% if form == null %}
+                <a href="{{ path("problem_new", {'id' : user.id}) }} " target="cos" onclick="onlslslslsl()">Zglos problem</a></br>
+                <a href="{{ path("user_editUser", {'id' : user.id}) }} " target="frameContentProductsinOrder" onclick="aa()">Edytuj swoje dane</a></br>
+            {% endif %}
         </div>
         <div id="products" style="float: right; width: 82%; border: groove #999999 2px; border-top-left-radius: 16px; border-top-right-radius: 16px; border-bottom: none; min-height: 400px; padding: 8px 16px 16px 16px;background: radial-gradient(#efeff5, white)">
             <iframe id="franetoOrder" name="frameContentProductsinOrder" src="" width="100%" height="350px" frameborder="none" style="display: none; z-index: 100; background-color: white;"></iframe>

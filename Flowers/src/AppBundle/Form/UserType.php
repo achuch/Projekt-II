@@ -20,13 +20,13 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', TextType::class, ['label'=>'Imie', 'label_attr'=>array('class'=>'myLabel'),'attr'=>['style'=>'margin-left:56px; margin-top:5px;']])
-            ->add('lastName', TextType::class, ['label'=>'Nazwisko', 'label_attr'=>array('class'=>'myLabel'),'attr'=>['style'=>'margin-left:21px; margin-top:5px;']])
-            ->add('phoneNumber',NumberType::class, ['label'=>'Telefon', 'label_attr'=>array('class'=>'myLabel'),'attr'=>['style'=>'margin-left:37px; margin-top:5px;']])
-            ->add('emailAddress', EmailType::class, ['label'=>'E-Mail', 'label_attr'=>array('class'=>'myLabel'),'attr'=>['style'=>'margin-left:40px; margin-top:5px;']])
+            ->add('firstName', TextType::class, ['label'=>'Imie', 'label_attr'=>array('class'=>'myLabel'),'attr'=>['style'=>'margin-left:63px; margin-top:5px;']])
+            ->add('lastName', TextType::class, ['label'=>'Nazwisko', 'label_attr'=>array('class'=>'myLabel'),'attr'=>['style'=>'margin-left:25px; margin-top:5px;']])
+            ->add('phoneNumber',NumberType::class, ['label'=>'Telefon', 'label_attr'=>array('class'=>'myLabel'),'attr'=>['style'=>'margin-left:42px; margin-top:5px;']])
+            ->add('emailAddress', EmailType::class, ['label'=>'E-Mail', 'label_attr'=>array('class'=>'myLabel'),'attr'=>['style'=>'margin-left:49px; margin-top:5px;']])
             ->add('hashPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
-                'first_options'  => array('label' => 'Hasło', 'label_attr' => ['class' => 'myLabel'], 'attr'=>['style'=>'margin-left:48px; margin-top:5px;']),
+                'first_options'  => array('label' => 'Hasło', 'label_attr' => ['class' => 'myLabel'], 'attr'=>['style'=>'margin-left:53px; margin-top:5px;']),
                 'second_options' => array('label' => 'Powtórz Hasło', 'attr'=>['style'=>'margin-left:5px; margin-top:5px;'])))
 
         ;

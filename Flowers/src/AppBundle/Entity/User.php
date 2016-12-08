@@ -328,4 +328,9 @@ class User implements UserInterface
     {
         return $this->addresses;
     }
+
+    function __toString()
+    {
+        return $this->getUsername();
+    }
 }

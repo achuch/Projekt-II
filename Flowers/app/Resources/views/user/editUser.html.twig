@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="contentOFIframeOrder" style="background-color: #e1b39b">
+    <div style="margin: auto;float: right;width: 69%;">
+    <h1>Edytuj swoje dane</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edytuj" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Usuń swoje konto" />
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+        </div>
+    </div>
+    <script>
+        function hide() {
+            document.getElementById('franetoOrder').style.display = "none";
+        }
+    </script>
+{% endblock %}

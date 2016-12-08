@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lista problemow</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Opis</th>
+                <th>Data</th>
+                <th>Zglosozne przez</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for problem in problems %}
+            <tr>
+                <td><a href="{{ path('problem_show', { 'id': problem.id }) }}">{{ problem.id }}</a></td>
+                <td>{{ problem.problemContent }}</td>
+                <td>{% if problem.dateOfProblem %}{{ problem.dateOfProblem|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ problem.user }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('problem_show', { 'id': problem.id }) }}">Pokaz</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
